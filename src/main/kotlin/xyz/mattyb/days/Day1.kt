@@ -4,7 +4,6 @@ import picocli.CommandLine.Command
 import picocli.CommandLine.Model.CommandSpec
 import picocli.CommandLine.Spec
 import java.util.concurrent.Callable
-import java.util.concurrent.atomic.AtomicInteger
 
 @Command(name = "day 1", aliases = ["d1", "d 1"])
 class Day1 : Callable<Int>, BaseDay() {
