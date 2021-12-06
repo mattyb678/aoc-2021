@@ -1,10 +1,13 @@
 package xyz.mattyb
 
 import picocli.CommandLine
-import picocli.CommandLine.*
+import picocli.CommandLine.Command
 import picocli.CommandLine.Model.CommandSpec
+import picocli.CommandLine.Option
+import picocli.CommandLine.Spec
 import xyz.mattyb.days.Day1
 import xyz.mattyb.days.Day2
+import xyz.mattyb.days.Day3
 import java.util.concurrent.Callable
 import kotlin.system.exitProcess
 
@@ -13,7 +16,8 @@ import kotlin.system.exitProcess
     mixinStandardHelpOptions = true,
     subcommands = [
         Day1::class,
-        Day2::class
+        Day2::class,
+        Day3::class
     ]
 )
 class MainCommand : Callable<Int> {
