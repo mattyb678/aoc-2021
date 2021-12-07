@@ -8,6 +8,7 @@ import picocli.CommandLine.Spec
 import xyz.mattyb.days.Day1
 import xyz.mattyb.days.Day2
 import xyz.mattyb.days.Day3
+import xyz.mattyb.days.Day4
 import java.util.concurrent.Callable
 import kotlin.system.exitProcess
 
@@ -17,7 +18,8 @@ import kotlin.system.exitProcess
     subcommands = [
         Day1::class,
         Day2::class,
-        Day3::class
+        Day3::class,
+        Day4::class
     ]
 )
 class MainCommand : Callable<Int> {
