@@ -52,6 +52,42 @@ class Day4 : Callable<Int>, BaseDay() {
         return 0
     }
 
+    @Command(name = "part 2", aliases = ["p 2", "p2"])
+    fun part2(): Int {
+        println("Day 4, Part 2, test=${parent?.test}")
+        var lines = readFileAsLines("src/main/resources/day4${test(parent?.test)}")
+        val moves = lines.first().split(",").map { it.toInt() }
+        lines = lines.drop(2)
+        val boards = mutableListOf<Board>()
+        while (lines.isNotEmpty()) {
+            val board = lines
+                .takeWhile { it.isNotBlank() }
+                .toBoard()
+            boards.add(board)
+            lines = lines.drop(board.size + 1)
+        }
+        val size = boards.size
+        var count = 0
+        outer@ for (move in moves) {
+            val iter = boards.iterator()
+            while (iter.hasNext()) {
+                val board = iter.next()
+                board.mark(move)
+                if (board.complete()) {
+                    count++
+                    if (count == size) {
+                        println("Answer: ${board.sum() * move}")
+                        break@outer
+                    } else {
+                        iter.remove()
+                    }
+                }
+            }
+        }
+
+        return 0
+    }
+
     override fun call(): Int {
         spec.commandLine().usage(System.out)
         return -1
